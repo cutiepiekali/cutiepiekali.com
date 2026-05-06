@@ -1,1 +1,184 @@
-Hello World!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cutie Pie Kali</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffd6e7;
+      color: #3a1f2b;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 40px;
+      background: linear-gradient(135deg, #ffd6e7, #ffc0dc);
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .hero-image img {
+      max-height: 85vh;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 520px;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      margin: 0;
+      line-height: 0.9;
+      color: #e83f8c;
+      letter-spacing: -2px;
+    }
+
+    .tagline {
+      font-size: 1.6rem;
+      margin: 20px 0;
+      font-weight: bold;
+      color: #7b2f55;
+    }
+
+    .about {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .links {
+      display: grid;
+      gap: 14px;
+      max-width: 420px;
+    }
+
+    .links a {
+      text-decoration: none;
+      background: #fff;
+      color: #e83f8c;
+      padding: 16px 20px;
+      border-radius: 999px;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(232, 63, 140, 0.18);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(232, 63, 140, 0.25);
+    }
+
+    .tour-dates {
+      background: #fff5fa;
+      padding: 60px 30px;
+      text-align: center;
+    }
+
+    .tour-dates h2 {
+      color: #e83f8c;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .tour-dates p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9rem;
+      color: #7b2f55;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .hero-image {
+        order: 1;
+      }
+
+      .hero-content {
+        order: 2;
+        padding: 20px 0;
+      }
+
+      .hero-image img {
+        max-height: 55vh;
+      }
+
+      .links {
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-image">
+      <img src="hero.png" alt="Cutie Pie Kali illustration" />
+    </div>
+
+    <div class="hero-content">
+      <h1>Cutie Pie Kali</h1>
+      <div class="tagline">sweet, playful, and a little mischievous.</div>
+
+      <p class="about">
+        Kali is a petite sweetheart with bubbly energy, soft charm, and a playful spark.
+        Cute on the outside, unforgettable in person.
+      </p>
+
+      <div class="links">
+        <a href="#">Book Me</a>
+        <a href="#">Tour Dates</a>
+        <a href="#">Tryst</a>
+        <a href="#">X / Twitter</a>
+        <a href="#">Premium Content</a>
+        <a href="mailto:admin@cutiepiekali.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tour-dates">
+    <h2>Current Tour Dates</h2>
+    <p>
+      Now booking select dates. Upcoming cities and availability will be posted here soon.
+      For booking, screening, and travel updates, use the links above.
+    </p>
+  </section>
+
+  <footer>
+    © 2026 Cutie Pie Kali
+  </footer>
+
+</body>
+</html>
