@@ -5,147 +5,367 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cutie Pie Kali</title>
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VNF3DQE1SG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-VNF3DQE1SG');
   </script>
-  
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+
+  <!-- Swiper + GLightbox -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"/>
+
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --pink: #ffd4e6;
+      --pink-2: #ffb8d6;
+      --hot-pink: #e84f94;
+      --rose: #9d3c69;
+      --cream: #fff8f3;
+      --text: #2f1824;
+      --soft: rgba(255,255,255,.72);
+      --shadow: 0 18px 50px rgba(93, 31, 57, .16);
     }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffd6e7;
-      color: #3a1f2b;
+      font-family: Inter, sans-serif;
+      background: var(--pink);
+      color: var(--text);
+    }
+
+    a { color: inherit; }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 38px;
+      color: white;
+      text-shadow: 0 2px 14px rgba(0,0,0,.35);
+    }
+
+    .nav-logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      opacity: .92;
     }
 
     .hero {
       min-height: 100vh;
+      position: relative;
       display: flex;
-      align-items: center;
-      padding: 40px;
-      background: linear-gradient(135deg, #ffd6e7, #ffc0dc);
-    }
-
-    .hero-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
       align-items: flex-end;
-    }
-
-    .hero-image img {
-      max-height: 85vh;
-      max-width: 100%;
-      object-fit: contain;
+      padding: 120px 8vw 90px;
+      background:
+        linear-gradient(90deg, rgba(45, 13, 31, .68), rgba(45, 13, 31, .2), rgba(45, 13, 31, .42)),
+        url("images/hero.jpg") center/cover no-repeat;
+      color: white;
     }
 
     .hero-content {
-      flex: 1;
-      max-width: 520px;
-      padding: 30px;
+      max-width: 680px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .78rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #ffe2ef;
     }
 
     h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(4.4rem, 10vw, 8.5rem);
+      line-height: .82;
       margin: 0;
-      line-height: 0.9;
-      color: #e83f8c;
-      letter-spacing: -2px;
+      font-weight: 700;
     }
 
-    .tagline {
-      font-size: 1.6rem;
-      margin: 20px 0;
-      font-weight: bold;
-      color: #7b2f55;
+    .script {
+      font-family: Sacramento, cursive;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: #ffd7e9;
+      margin: 18px 0 8px;
     }
 
-    .about {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 30px;
+    .hero p {
+      font-size: 1.12rem;
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 0 30px;
     }
 
-    .links {
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: white;
+      color: var(--rose);
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,.2);
+      color: white;
+      border: 1px solid rgba(255,255,255,.5);
+      backdrop-filter: blur(8px);
+    }
+
+    section {
+      padding: 82px 8vw;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.5rem, 6vw, 4.4rem);
+      margin: 0 0 18px;
+      color: var(--rose);
+      line-height: .95;
+    }
+
+    .section-kicker {
+      font-family: Sacramento, cursive;
+      color: var(--hot-pink);
+      font-size: 2.1rem;
+      margin-bottom: -4px;
+    }
+
+    .card {
+      background: var(--cream);
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.65);
+    }
+
+    .quick-links {
+      margin-top: -55px;
+      position: relative;
+      z-index: 5;
+      padding-top: 0;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .link-grid a,
+    .review-links a,
+    .wishlist-links a {
+      text-decoration: none;
+      background: white;
+      color: var(--rose);
+      border-radius: 999px;
+      padding: 15px 18px;
+      text-align: center;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(157,60,105,.12);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 1.12rem;
+      line-height: 1.8;
+    }
+
+    .vibe-list {
       display: grid;
       gap: 14px;
-      max-width: 420px;
     }
 
-    .links a {
-      text-decoration: none;
-      background: #fff;
-      color: #e83f8c;
-      padding: 16px 20px;
-      border-radius: 999px;
-      font-weight: bold;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(232, 63, 140, 0.18);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    .vibe {
+      background: rgba(255,255,255,.65);
+      border-radius: 24px;
+      padding: 20px;
+      font-weight: 800;
+      color: var(--rose);
     }
 
-    .links a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 26px rgba(232, 63, 140, 0.25);
+    .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
-    .tour-dates {
-      background: #fff5fa;
-      padding: 60px 30px;
-      text-align: center;
+    .tour-card {
+      background: var(--cream);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
     }
 
-    .tour-dates h2 {
-      color: #e83f8c;
+    .tour-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      color: var(--rose);
       font-size: 2rem;
-      margin-bottom: 15px;
+      margin: 0 0 6px;
     }
 
-    .tour-dates p {
-      max-width: 600px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      line-height: 1.6;
+    .gallery-section {
+      padding-left: 0;
+      padding-right: 0;
+      overflow: hidden;
+    }
+
+    .gallery-header {
+      padding: 0 8vw 30px;
+    }
+
+    .swiper {
+      width: 100%;
+      padding: 10px 8vw 50px;
+    }
+
+    .swiper-slide {
+      width: 72%;
+      max-width: 520px;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 680px;
+      object-fit: cover;
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      display: block;
+    }
+
+    .reviews,
+    .wishlist,
+    .contact {
+      text-align: center;
+    }
+
+    .reviews p,
+    .wishlist p,
+    .contact p {
+      max-width: 650px;
+      margin: 0 auto 26px;
+      line-height: 1.8;
+      font-size: 1.08rem;
+    }
+
+    .review-links,
+    .wishlist-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .contact-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      color: var(--rose);
+      margin: 22px 0;
     }
 
     footer {
+      padding: 40px 8vw;
       text-align: center;
-      padding: 25px;
-      font-size: 0.9rem;
-      color: #7b2f55;
+      color: var(--rose);
+      font-size: .95rem;
     }
 
-    @media (max-width: 800px) {
+    .heart {
+      color: var(--hot-pink);
+    }
+
+    @media (max-width: 850px) {
+      .nav {
+        padding: 18px 20px;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 10px;
+        font-size: .68rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
       .hero {
+        padding: 110px 24px 70px;
+        background-position: center top;
+      }
+
+      .buttons {
         flex-direction: column;
-        text-align: center;
-        padding: 30px 20px;
+        align-items: stretch;
       }
 
-      .hero-image {
-        order: 1;
+      .link-grid,
+      .about-grid,
+      .tour-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero-content {
-        order: 2;
-        padding: 20px 0;
+      .swiper {
+        padding-left: 22px;
+        padding-right: 22px;
       }
 
-      .hero-image img {
-        max-height: 55vh;
+      .swiper-slide {
+        width: 86%;
       }
 
-      .links {
-        margin: 0 auto;
+      .swiper-slide img {
+        height: 520px;
       }
     }
   </style>
@@ -153,42 +373,197 @@
 
 <body>
 
-  <section class="hero">
-    <div class="hero-image">
-      <img src="hero.png" alt="Cutie Pie Kali illustration" />
+  <nav class="nav">
+    <div class="nav-logo">Cutie Pie Kali</div>
+    <div class="nav-links">
+      <a href="#tour">Tour</a>
+      <a href="#photos">Photos</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
     </div>
+  </nav>
 
+  <header class="hero">
     <div class="hero-content">
-      <h1>Cutie Pie Kali</h1>
-      <div class="tagline">sweet, playful, and a little mischievous.</div>
-
-      <p class="about">
-        Kali is a petite sweetheart with bubbly energy, soft charm, and a playful spark.
-        Cute on the outside, unforgettable in person.
+      <div class="eyebrow">Traveling Entertainer & Model</div>
+      <h1>Cutie Pie<br>Kali</h1>
+      <div class="script">soft moments & sweet memories.</div>
+      <p>
+        Sensual, bubbly, and effortlessly feminine — Kali creates moments that feel intimate,
+        playful, and unforgettable.
       </p>
+      <div class="buttons">
+        <a class="btn" href="#contact">Booking Inquiries</a>
+        <a class="btn secondary" href="#photos">View Photos</a>
+      </div>
+    </div>
+  </header>
 
-      <div class="links">
-        <a href="#">Book Me</a>
-        <a href="#">Tour Dates</a>
-        <a href="#">Tryst</a>
-        <a href="#">X / Twitter</a>
-        <a href="#">Premium Content</a>
-        <a href="mailto:admin@cutiepiekali.com">Email</a>
+  <section class="quick-links">
+    <div class="card">
+      <div class="link-grid">
+        <a href="https://x.com/cutiepiekalixo" target="_blank">X</a>
+        <a href="https://instagram.com/cutiepiekalixo" target="_blank">Instagram</a>
+        <a href="#tour">Tour Dates</a>
+        <a href="#photos">Photos</a>
+        <a href="#wishlist">Wishlist</a>
       </div>
     </div>
   </section>
 
-  <section class="tour-dates">
-    <h2>Current Tour Dates</h2>
+  <section id="about">
+    <div class="about-grid">
+      <div>
+        <div class="section-kicker">meet Kali</div>
+        <h2 class="section-title">Cute, sensual, and softly unforgettable.</h2>
+        <p class="about-text">
+          Kali is a traveling entertainer and model known for her sweet energy,
+          playful charm, and magnetic presence. She brings a soft, feminine warmth
+          to every experience — creating moments that feel personal, exciting,
+          and memorable.
+        </p>
+      </div>
+
+      <div class="card vibe-list">
+        <div class="vibe">♡ Traveling Entertainer</div>
+        <div class="vibe">♡ Model</div>
+        <div class="vibe">♡ Soft Moments</div>
+        <div class="vibe">♡ Sweet Memories</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tour">
+    <div class="section-kicker">where to find her</div>
+    <h2 class="section-title">Tour Dates</h2>
+
+    <div class="tour-grid">
+      <div class="tour-card">
+        <h3>Detroit</h3>
+        <p>Available by request</p>
+      </div>
+      <div class="tour-card">
+        <h3>Chicago</h3>
+        <p>Upcoming / TBA</p>
+      </div>
+      <div class="tour-card">
+        <h3>Select Cities</h3>
+        <p>Tour dates posted soon</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos" class="gallery-section">
+    <div class="gallery-header">
+      <div class="section-kicker">a little glimpse</div>
+      <h2 class="section-title">Photos</h2>
+    </div>
+
+    <div class="swiper">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <a href="images/gallery1.jpg" class="glightbox" data-gallery="kali-gallery">
+            <img src="images/gallery1.jpg" alt="Cutie Pie Kali photo 1">
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="images/gallery2.jpg" class="glightbox" data-gallery="kali-gallery">
+            <img src="images/gallery2.jpg" alt="Cutie Pie Kali photo 2">
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="images/gallery3.jpg" class="glightbox" data-gallery="kali-gallery">
+            <img src="images/gallery3.jpg" alt="Cutie Pie Kali photo 3">
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="images/gallery4.jpg" class="glightbox" data-gallery="kali-gallery">
+            <img src="images/gallery4.jpg" alt="Cutie Pie Kali photo 4">
+          </a>
+        </div>
+
+        <div class="swiper-slide">
+          <a href="images/gallery5.jpg" class="glightbox" data-gallery="kali-gallery">
+            <img src="images/gallery5.jpg" alt="Cutie Pie Kali photo 5">
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="reviews">
+    <div class="section-kicker">kind words</div>
+    <h2 class="section-title">Reviews</h2>
     <p>
-      Now booking select dates. Upcoming cities and availability will be posted here soon.
-      For booking, screening, and travel updates, use the links above.
+      A few places to find verified experiences, kind words, and memorable moments.
     </p>
+
+    <div class="review-links">
+      <a href="#" target="_blank">TER</a>
+      <a href="#" target="_blank">Tryst</a>
+      <a href="#" target="_blank">P411</a>
+    </div>
+  </section>
+
+  <section id="wishlist" class="wishlist">
+    <div class="section-kicker">make her smile</div>
+    <h2 class="section-title">Wishlist</h2>
+    <p>
+      Gift giving is a love language, and Kali loves little reminders that she’s adored.
+      A thoughtful surprise, something soft, something pretty, or something pink is always appreciated.
+    </p>
+
+    <div class="wishlist-links">
+      <a href="#" target="_blank">Wishlist</a>
+      <a href="#" target="_blank">Send a Gift</a>
+      <a href="#" target="_blank">Pretty Things</a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="section-kicker">say hello</div>
+    <h2 class="section-title">Booking Inquiries</h2>
+    <p>
+      For availability, touring updates, and booking inquiries, please reach out directly.
+    </p>
+
+    <div class="contact-number">(XXX) XXX-XXXX</div>
+
+    <div class="buttons" style="justify-content:center;">
+      <a class="btn" href="sms:+10000000000">Text Kali</a>
+      <a class="btn secondary" href="mailto:hello@example.com">Email</a>
+    </div>
   </section>
 
   <footer>
-    © 2026 Cutie Pie Kali
+    <p>Cutie Pie Kali <span class="heart">♡</span> traveling entertainer & model</p>
+    <p>© 2026 Cutie Pie Kali</p>
   </footer>
+
+  <!-- Swiper + GLightbox JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+  <script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      grabCursor: true,
+      centeredSlides: false,
+      spaceBetween: 22,
+      slidesPerView: 'auto'
+    });
+
+    const lightbox = GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true
+    });
+  </script>
 
 </body>
 </html>
